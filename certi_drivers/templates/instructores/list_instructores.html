@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %} Listado Instructores  {% endblock %}
+
+{% block search %}
+    <form class="d-flex my-2" action="/academia_conduccion/list_instructores/" method="GET">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+{% endblock %}
+
+{% block contenido %}
+
+    <div class="mt-5 mx-5 d-flex flex-column align-items-center">
+        <h1>Listado Instructores</h1>
+
+        <table class="table mt-5">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Jornada</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                {% for instructor in instructores %}
+
+                    <tr>
+                        <th scope="row">{{instructor.id}}</th>
+                        <td>{{instructor.nombre}}</td>
+                        <td>{{instructor.apellido}}</td>
+                        <td>{{instructor.jornada}}</td>
+
+                    </tr>
+
+                {% endfor %}              
+              
+            </tbody>
+        </table>
+
+    </div>
+
+
+{% endblock %}

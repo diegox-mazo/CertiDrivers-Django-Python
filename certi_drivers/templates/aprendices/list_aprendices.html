@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %} Listado Aprendices  {% endblock %}
+
+{% block search %}
+    <form class="d-flex my-2" action="/academia_conduccion/list_aprendices/" method="GET">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+{% endblock %}
+
+{% block contenido %}
+
+    <div class="mt-5 mx-5 d-flex flex-column align-items-center">
+        <h1>Listado Aprendices</h1>
+
+        <table class="table mt-5">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Tipo Sangre</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                {% for aprendiz in aprendices %}
+
+                    <tr>
+                        <th scope="row">{{aprendiz.id}}</th>
+                        <td>{{aprendiz.nombre}}</td>
+                        <td>{{aprendiz.apellido}}</td>
+                        <td>{{aprendiz.edad}}</td>
+                        <td>{{aprendiz.direccion}}</td>
+                        <td>{{aprendiz.tipo_sangre}}</td>
+                    </tr>
+
+                {% endfor %}              
+              
+            </tbody>
+        </table>
+
+    </div>
+
+
+{% endblock %}

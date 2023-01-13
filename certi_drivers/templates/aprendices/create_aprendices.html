@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %} Crear Aprendices  {% endblock %}
+
+{% block contenido %}
+
+    {% if form %}
+        <div class="mt-5 mx-5 d-flex flex-column align-items-center">
+            <h1>Crear Aprendices</h1>
+
+            <form action="" method="POST">
+
+                {% csrf_token %}
+
+                <table class="mt-3">
+                    {{form.as_table}}
+                </table>                
+
+                <input type="submit" value="Crear Aprendiz" class="mt-4">
+
+            </form>         
+
+        </div>
+    {% endif %}
+
+    {% if form_errors %}
+        <div class="mt-5 mx-5 d-flex flex-column align-items-center">
+            <h2 style="color: red;">Errores:</h2>
+            {{form_errors}}
+        </div>
+    {% endif %}
+    
+    {% if message %}
+        <div class="mt-5 mx-5 d-flex flex-column align-items-center">
+            <h1 style="color: green;">{{message}}</h1>
+        </div>
+    {% endif %}    
+
+
+{% endblock %}
