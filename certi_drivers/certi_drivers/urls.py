@@ -15,12 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from certi_drivers.views import vista_index
+from certi_drivers.views import vista_index, vista_about, vista_licencias
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', vista_index, name='index'),
-    path('admin/', admin.site.urls),
-    
+    path('about/', vista_about, name='about'),
+    path('licencias/', vista_licencias, name='licencias'),
+    path('admin/', admin.site.urls),    
 
-    path('academia_conduccion/', include('academia_conduccion.urls')),
-]
+    path('aprendices/', include('aprendices.urls')),
+    path('instructores/', include('instructores.urls')),
+    path('users/', include('users.urls')),
+
+]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

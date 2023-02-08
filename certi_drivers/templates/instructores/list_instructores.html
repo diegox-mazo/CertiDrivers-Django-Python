@@ -1,44 +1,50 @@
 {% extends "base.html" %}
 
-{% block title %} Listado Instructores  {% endblock %}
+{% block title %} Listado Instructores {% endblock %}
 
-{% block search %}
-    <form class="d-flex my-2" action="/academia_conduccion/list_instructores/" method="GET">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  name="search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-{% endblock %}
 
 {% block contenido %}
 
     <div class="mt-5 mx-5 d-flex flex-column align-items-center">
-        <h1>Listado Instructores</h1>
+        <h1>Listado de Instructores</h1>
 
-        <table class="table mt-5">
+        <table class="table table-striped table-hover mt-5">
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Id</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
-                <th scope="col">Jornada</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Email</th>
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
 
-                {% for instructor in instructores %}
+                {% for instructor in object_list %}
 
                     <tr>
                         <th scope="row">{{instructor.id}}</th>
+                        <td>{{instructor.identificacion}}</td>
                         <td>{{instructor.nombre}}</td>
                         <td>{{instructor.apellido}}</td>
-                        <td>{{instructor.jornada}}</td>
-
+                        <td>{{instructor.telefono}}</td>
+                        <td>{{instructor.email}}</td>
+                        <td>
+                            <div>
+                                <a href="/instructores/update_instructores/{{instructor.id}}/" class="btn btn-warning me-2">Editar</a>
+                                <a href="/instructores/delete_instructores/{{instructor.id}}/" class="btn btn-danger">Borrar</a>
+                            </div>
+                        </td>
                     </tr>
 
-                {% endfor %}              
+                {% endfor %}             
               
             </tbody>
         </table>
+
+        <a href="/instructores/create_instructores/" class="btn btn-primary btn-lg mt-5">Crear Instructor</a>
 
     </div>
 

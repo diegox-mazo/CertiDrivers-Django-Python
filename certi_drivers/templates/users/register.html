@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %} Registrarse  {% endblock %}
+
+{% block contenido %}
+
+    {% if form %}
+        <div class="mt-5 mx-5 d-flex flex-column align-items-center">
+            <h1 class="my-3" style="color: green;">Registrarse</h1>
+
+            <form class="border border-primary p-5" action="" method="POST">
+
+                {% csrf_token %}
+
+                <table class="mt-3">
+                    {{form.as_table}}
+                </table>                
+                
+                <div class="container-fluid h-100"> 
+                    <div class="row w-100 align-items-center">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary mt-5">Registrarse</button>
+                        </div>	
+                    </div>
+                </div>                
+
+            </form>         
+
+        </div>
+    {% endif %}
+
+    {% if errors %}
+        <div class="mt-5 mx-5 d-flex flex-column align-items-center">
+            <h2 style="color: red;">Errores:</h2>
+            {{errors}}
+        </div>
+    {% endif %}  
+
+
+{% endblock %}

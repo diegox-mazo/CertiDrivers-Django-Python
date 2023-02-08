@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %} Borrar Instructores  {% endblock %}
+
+{% block contenido %}
+
+    {% if form %}
+        <div class="mt-5 mx-5 d-flex flex-column align-items-center">
+            <h1 class="my-3" style="color: red;">Confirmacion de Borrado</h1>
+
+            <h2 class="mt-5">¿ Esta Seguro de borrar a {{object.nombre}} {{object.apellido}} ?</h2>
+            <form action="" method="POST">
+
+                {% csrf_token %}               
+
+                <button type="submit" class="btn btn-danger mt-5">Borrar Instructor</button>                            
+
+            </form>                    
+
+        </div>
+    {% endif %}      
+
+
+{% endblock %}

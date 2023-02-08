@@ -2,46 +2,55 @@
 
 {% block title %} Listado Aprendices  {% endblock %}
 
-{% block search %}
-    <form class="d-flex my-2" action="/academia_conduccion/list_aprendices/" method="GET">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-{% endblock %}
 
 {% block contenido %}
 
     <div class="mt-5 mx-5 d-flex flex-column align-items-center">
-        <h1>Listado Aprendices</h1>
+        <h1>Listado de Aprendices</h1>
 
-        <table class="table mt-5">
+        <table class="table table-striped table-hover mt-5">
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Id</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
+                <th scope="col">Genero</th>
                 <th scope="col">Edad</th>
                 <th scope="col">Direccion</th>
                 <th scope="col">Tipo Sangre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
 
-                {% for aprendiz in aprendices %}
+                {% for aprendiz in object_list %}
 
                     <tr>
                         <th scope="row">{{aprendiz.id}}</th>
+                        <td>{{aprendiz.identificacion}}</td>
                         <td>{{aprendiz.nombre}}</td>
                         <td>{{aprendiz.apellido}}</td>
+                        <td>{{aprendiz.genero}}</td>
                         <td>{{aprendiz.edad}}</td>
                         <td>{{aprendiz.direccion}}</td>
                         <td>{{aprendiz.tipo_sangre}}</td>
+                        <td>{{aprendiz.email}}</td>
+                        <td>
+                            <div>
+                                <a href="/aprendices/update_aprendices/{{aprendiz.id}}/" class="btn btn-warning me-2">Editar</a>
+                                <a href="/aprendices/delete_aprendices/{{aprendiz.id}}/" class="btn btn-danger">Borrar</a>
+                            </div>
+                        </td>
                     </tr>
 
-                {% endfor %}              
+                {% endfor %}             
               
             </tbody>
         </table>
+
+        <a href="/aprendices/create_aprendices/" class="btn btn-primary btn-lg mt-5">Crear Aprendiz</a>
 
     </div>
 

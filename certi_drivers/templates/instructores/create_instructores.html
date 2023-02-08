@@ -6,17 +6,23 @@
 
     {% if form %}
         <div class="mt-5 mx-5 d-flex flex-column align-items-center">
-            <h1>Crear Instructores</h1>
+            <h1 class="my-3" style="color: green;">Crear Instructores</h1>
 
-            <form action="" method="POST">
+            <form class="border border-primary p-5" action="" method="POST" enctype="multipart/form-data">
 
                 {% csrf_token %}
 
                 <table class="mt-3">
                     {{form.as_table}}
                 </table>                
-
-                <input type="submit" value="Crear Instructor" class="mt-4">
+                
+                <div class="container-fluid h-100"> 
+                    <div class="row w-100 align-items-center">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary mt-5">Crear Instructor</button>
+                        </div>	
+                    </div>
+                </div>                
 
             </form>         
 
@@ -31,9 +37,15 @@
     {% endif %}
     
     {% if message %}
-        <div class="mt-5 mx-5 d-flex flex-column align-items-center">
+    <div class="mt-5 mx-5 d-flex flex-column align-items-center">
+        <div class="my-5">
             <h1 style="color: green;">{{message}}</h1>
         </div>
+        <div class="my-3">
+            <a href="/instructores/list_instructores/" class="btn btn-primary btn-lg">Listar Instructores</a>
+        </div>
+    </div>
+        
     {% endif %}    
 
 
